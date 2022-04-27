@@ -1,0 +1,29 @@
+<?xml version="1.0" ?>
+<layout xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_layout.xsd">
+    <update handle="empty" />
+    <referenceContainer name="page.wrapper">
+        <container name="header.container" as="header_container" label="Page Header Container"  htmlTag="header" htmlClass="page-header" before="main.content"/>
+        <container name="page.top" as="page_top" label="After Page Header" after="header.container"/>
+        <container name="footer-container" as="footer" before="before.body.end" label="Page Footer Container" htmlTag="footer" htmlClass="page-footer"/>
+    </referenceContainer>
+    <referenceContainer name="columns.top">
+        <referenceContainer name="category.view.container">
+            <block class="Magento\Catalog\Block\Category\View" name="category.title" template="Magento_Catalog::category/category-title.phtml" after="category.image"/>
+        </referenceContainer>
+    </referenceContainer>
+    <referenceContainer name="content">
+        <referenceBlock name="category.products">
+            <referenceBlock name="category.products.list">
+                <action method="setTemplate">
+                    <argument name="template" xsi:type="string">Magento_Catalog::product/custom-list.phtml</argument>
+                </action>
+            </referenceBlock>
+        </referenceBlock>
+    </referenceContainer>
+    <referenceContainer name="category.product.addto" remove="true" />
+    <referenceContainer name="category.product.list.additional" remove="true" />
+    <referenceContainer name="category.product.type.details.renderers" remove="true" />
+    <referenceContainer name="sidebar.main" remove="true" />
+    <referenceContainer name="breadcrumbs" remove="true" />
+    <referenceContainer name="page.main.title" remove="true" />
+</layout>
